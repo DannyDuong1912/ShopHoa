@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     double totalPrice = 0;
     String year, month, day, hour, minute;
 
-    private boolean confirmed = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,10 +88,13 @@ public class MainActivity extends AppCompatActivity {
         final TextView time_txt = findViewById(R.id.delivery_time_tv);
         final ImageView time_ic = findViewById(R.id.delivery_time_ic);
 
+        final RadioGroup payment_radio_group = findViewById(R.id.payment_radio_group);
+        final RadioButton cash_radio_btn = findViewById(R.id.payment_radio_btn_cash);
+        final RadioButton credit_radio_btn = findViewById(R.id.payment_radio_btn_credit);
         final TextView payment_tv = findViewById(R.id.payment_message_tv);
 
-        final Button again_btn = findViewById(R.id.goodbye_btn);
         final Button confirm_btn = findViewById(R.id.approve_btn);
+        final Button again_btn = findViewById(R.id.goodbye_btn);
         /** <-------- Variables --------> */
 
 
@@ -436,12 +437,23 @@ public class MainActivity extends AppCompatActivity {
         /** <-------- Time Picker Dialog --------> */
 
 
+        /** <-------- Payment Radio Group --------> */
+        payment_radio_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (cash_radio_btn.isChecked() || credit_radio_btn.isChecked())
+                    payment_tv.setVisibility(View.VISIBLE);
+            }
+        });
+        /** <-------- Payment Radio Group --------> */
+
+
         /** <-------- Confirmation Dialog --------> */
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                /** <-------- Checks if the user had insert an address, date or time --------> */
+                /** <-------- Checks if the user had insert address, date, time and payment method --------> */
                 if (address_edit_txt.getText().toString().trim().length() == 0 && spinner.getSelectedItemPosition() != 1) {
                     scrollView.scrollTo(0, (int) (spinnerLayout.getY()));
                     Toast.makeText(MainActivity.this, R.string.address_error, Toast.LENGTH_SHORT).show();
@@ -459,7 +471,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, R.string.time_error, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                /** <-------- Checks if the user had insert an address, date or time --------> */
+
+                if (!cash_radio_btn.isChecked() && !credit_radio_btn.isChecked()) {
+                    scrollView.scrollTo(0, (int) (paymentLayout.getY()));
+                    Toast.makeText(MainActivity.this, R.string.payment_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                /** <-------- Checks if the user had insert address, date, time and payment method --------> */
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
@@ -525,8 +543,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton(getResources().getString(R.string.dlg_btn_ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        confirmed = true;
-
                         radioBtnLayout.setVisibility(View.GONE);
                         checkBoxLayout.setVisibility(View.GONE);
                         spinnerLayout.setVisibility(View.GONE);
@@ -538,6 +554,7 @@ public class MainActivity extends AppCompatActivity {
                         time_txt.setVisibility(View.GONE);
                         time_ic.setVisibility(View.GONE);
                         paymentLayout.setVisibility(View.GONE);
+                        payment_tv.setVisibility(View.GONE);
                         confirm_btn.setVisibility(View.GONE);
 
                         goodbyeLayout.setVisibility(View.VISIBLE);
@@ -550,7 +567,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.setNegativeButton(getResources().getString(R.string.dlg_btn_cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        confirmed = false;
                         dialog.cancel();
                     }
                 });
@@ -594,6 +610,7 @@ public class MainActivity extends AppCompatActivity {
                 date_txt.setText("");
                 time_txt.setText("");
                 year = month = day = hour = minute = null;
+                payment_radio_group.clearCheck();
 
                 goodbyeLayout.setVisibility(View.GONE);
             }
