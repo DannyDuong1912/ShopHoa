@@ -6,7 +6,7 @@
     <string name="bouquet_number">Select bouquet </string>
     <string name="select_num_of_bouquets">How Many Bouquets Would You Like?</string>
     <string name="insert_num_bouquets_radioBtn_et">Insert number of bouquets…</string>
-    <string name="radio_btn_edit_txt_error">You have to Insert a number in order to continue</string>
+    <string name="radio_btn_edit_txt_error">Please insert a number to continue</string>
     <string name="radio_btn_done">Continue</string>
     <string name="gaya_btn_txt">Gaya\n149.90₪</string>
     <string name="anat_btn_txt">Anat\n139.90₪</string>
@@ -28,17 +28,17 @@
     <string name="accurate_delivery">Accurate Delivery - ₪24.90</string>
 
     <string name="address_edit_txt_hint">City, Street, House number…</string>
-    <string name="address_error">Insert an address to continue!</string>
+    <string name="address_error">Please insert an address to continue!</string>
 
     <string name="delivery_date_btn">Press to select Date for Delivery</string>
     <string name="pickup_date_btn">Press to select Date for Pick-Up</string>
     <string name="select_delivery_day">Select Day for Delivery:</string>
     <string name="select_pickup_day">Select Day for Pick-Up:</string>
-    <string name="date_error">Insert a date to continue!</string>
+    <string name="date_error">Please insert a date to continue!</string>
 
     <string name="delivery_time_btn">Press to select Time for Delivery</string>
     <string name="select_delivery_time">Select Time for Delivery:</string>
-    <string name="time_error">Insert time to continue!</string>
+    <string name="time_error">Please insert time to continue!</string>
 
 
     <string name="payment_select">Select a Payment Method:</string>
@@ -46,6 +46,7 @@
     <string name="payment_rb_credit">Credit Card</string>
     <string name="payment_message_delivery_tv">Your payment will be collected by the delivery guy</string>
     <string name="payment_message_pickup_tv">Your payment will be collected at the store</string>
+    <string name="payment_error">Please insert a payment method</string>
 
 
     <string name="confirm_order">Confirm Your Order</string>
