@@ -47,6 +47,7 @@
     <string name="payment_rb_credit">כרטיס אשראי</string>
     <string name="payment_message_delivery_tv">תשלומך ייגבה ע\"י השליח</string>
     <string name="payment_message_pickup_tv">תשלומך ייגבה בחנות</string>
+    <string name="payment_error">הכנס אמצעי תשלום כדי להמשיך!</string>
 
 
     <string name="confirm_order">אשר הזמנה</string>
