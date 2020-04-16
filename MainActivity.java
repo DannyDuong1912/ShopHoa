@@ -647,6 +647,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
         fadeIn.setDuration(500);
+        fadeIn.setStartOffset(500);
 
         if (isChecked) {
             if (checkBox.getId() == R.id.checkBox_chocolate)
