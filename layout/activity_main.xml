@@ -158,41 +158,59 @@
                 <CheckBox
                     android:id="@+id/checkBox_chocolate"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="70dp"
                     android:layout_below="@id/checkBox_tv_2"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:text="@string/check_box_chocolate"
                     android:textSize="20sp"
-                    android:textColor="@color/colorBlack"/>
-
+                    android:textColor="@color/colorBlack" />
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/checkBox_chocolate_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:src="@drawable/ic_chocolate"
                     android:layout_toEndOf="@id/checkBox_chocolate"
                     android:layout_alignTop="@id/checkBox_chocolate"
-                    android:layout_marginStart="15dp"/>
+                    android:layout_marginStart="15dp" />
+                <ImageView
+                    android:id="@+id/checkBox_bag_chocolate_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_bag_chocolate"
+                    android:layout_toEndOf="@id/checkBox_chocolate"
+                    android:layout_alignTop="@id/checkBox_chocolate"
+                    android:layout_marginStart="15dp"
+                    android:visibility="invisible"/>
 
 
                 <CheckBox
                     android:id="@+id/checkBox_bear"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="70dp"
                     android:layout_below="@id/checkBox_chocolate"
                     android:gravity="center"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/check_box_bear"
                     android:textSize="20sp"
                     android:textColor="@color/colorBlack"/>
-
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/checkBox_bear_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:src="@drawable/ic_bear"
                     android:layout_toEndOf="@id/checkBox_bear"
                     android:layout_alignTop="@id/checkBox_bear"
                     android:layout_marginStart="15dp"/>
+                <ImageView
+                    android:id="@+id/checkBox_bag_bear_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_bag_bear"
+                    android:layout_toEndOf="@id/checkBox_bear"
+                    android:layout_alignTop="@id/checkBox_bear"
+                    android:layout_marginStart="15dp"
+                    android:visibility="invisible"/>
 
                 <CheckBox
                     android:id="@+id/checkBox_wine"
@@ -200,18 +218,25 @@
                     android:layout_height="70dp"
                     android:layout_below="@id/checkBox_bear"
                     android:gravity="center"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/check_box_wine"
                     android:textSize="20sp"
                     android:textColor="@color/colorBlack"/>
-
-
                 <ImageView
+                    android:id="@+id/checkBox_wine_ic"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:src="@drawable/ic_wine"
                     android:layout_toEndOf="@id/checkBox_wine"
                     android:layout_alignTop="@id/checkBox_wine"/>
+                <ImageView
+                    android:id="@+id/checkBox_bag_wine_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_bag_wine"
+                    android:layout_toEndOf="@id/checkBox_wine"
+                    android:layout_alignTop="@id/checkBox_wine"
+                    android:visibility="invisible"/>
 
             </RelativeLayout>
             <!--Check Box-->
