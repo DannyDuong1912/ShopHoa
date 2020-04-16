@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -33,8 +35,9 @@ import android.widget.Toast;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     String deliveryType;
     LinearLayout radioBtnDynamicLayout;
     RadioGroup[] radioGroup;
@@ -301,6 +304,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /** <-------- Dynamic Radio Button --------> */
+
+
+        /** <-------- Check Boxes --------> */
+        cb_chocolate.setOnCheckedChangeListener(this);
+        cb_bear.setOnCheckedChangeListener(this);
+        cb_wine.setOnCheckedChangeListener(this);
+        /** <-------- Check Boxes --------> */
 
 
         /** <-------- Date Picker Dialog --------> */
@@ -616,5 +626,74 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /** <-------- Restarting the Application --------> */
+    }
+
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        CheckBox checkBox = (CheckBox) buttonView;
+
+        ImageView chocolate = findViewById(R.id.checkBox_chocolate_ic);
+        ImageView bear = findViewById(R.id.checkBox_bear_ic);
+        ImageView wine = findViewById(R.id.checkBox_wine_ic);
+
+        ImageView bag_chocolate = findViewById(R.id.checkBox_bag_chocolate_ic);
+        ImageView bag_bear = findViewById(R.id.checkBox_bag_bear_ic);
+        ImageView bag_wine = findViewById(R.id.checkBox_bag_wine_ic);
+
+
+        AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+        fadeOut.setDuration(500);
+
+        AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        fadeIn.setDuration(500);
+
+        if (isChecked) {
+            if (checkBox.getId() == R.id.checkBox_chocolate)
+            {
+                chocolate.startAnimation(fadeOut);
+                chocolate.setVisibility(View.INVISIBLE);
+                bag_chocolate.startAnimation(fadeIn);
+                bag_chocolate.setVisibility(View.VISIBLE);
+            }
+            else if (checkBox.getId() == R.id.checkBox_bear)
+            {
+                bear.startAnimation(fadeOut);
+                bear.setVisibility(View.INVISIBLE);
+                bag_bear.startAnimation(fadeIn);
+                bag_bear.setVisibility(View.VISIBLE);
+            }
+            else if (checkBox.getId() == R.id.checkBox_wine)
+            {
+                wine.startAnimation(fadeOut);
+                wine.setVisibility(View.INVISIBLE);
+                bag_wine.startAnimation(fadeIn);
+                bag_wine.setVisibility(View.VISIBLE);
+            }
+        }
+        else
+        {
+            if (checkBox.getId() == R.id.checkBox_chocolate)
+            {
+                bag_chocolate.startAnimation(fadeOut);
+                bag_chocolate.setVisibility(View.INVISIBLE);
+                chocolate.startAnimation(fadeIn);
+                chocolate.setVisibility(View.VISIBLE);
+            }
+            else if (checkBox.getId() == R.id.checkBox_bear)
+            {
+                bag_bear.startAnimation(fadeOut);
+                bag_bear.setVisibility(View.INVISIBLE);
+                bear.startAnimation(fadeIn);
+                bear.setVisibility(View.VISIBLE);
+            }
+            else if (checkBox.getId() == R.id.checkBox_wine)
+            {
+                bag_wine.startAnimation(fadeOut);
+                bag_wine.setVisibility(View.INVISIBLE);
+                wine.startAnimation(fadeIn);
+                wine.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }
