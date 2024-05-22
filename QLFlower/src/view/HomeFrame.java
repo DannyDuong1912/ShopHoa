@@ -76,7 +76,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(255, 204, 204));
         jButton6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jButton6.setText("Đơn Hàng");
+        jButton6.setText("Đặt Hàng");
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 180, 40));
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 204));
