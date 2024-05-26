@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Duong Minh Dat
@@ -13,6 +15,7 @@ public class LoginFrame extends javax.swing.JFrame {
     /**
      * Creates new form LoginFrame
      */
+    int xx,xy;
     public LoginFrame() {
         initComponents();
     }
@@ -36,15 +39,25 @@ public class LoginFrame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -74,6 +87,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 204, 204));
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -94,13 +112,16 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hide.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/visible.png"))); // NOI18N
-
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
             }
         });
 
@@ -127,7 +148,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                            .addComponent(jTextField6))
+                            .addComponent(jPasswordField1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,10 +185,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,9 +234,46 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    // Hiển thị mật khẩu bằng cách thiết lập ký tự echo thành 0 (không che giấu)
+    jPasswordField1.setEchoChar((char) 0);
+    // Ẩn jLabel9 (ví dụ: biểu tượng "hiển thị mật khẩu")
+    jLabel9.setVisible(false);
+    // Hiển thị jLabel2 (ví dụ: biểu tượng "ẩn mật khẩu")
+    jLabel2.setVisible(true);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        jPasswordField1.setEchoChar('*');
+        // Ẩn jLabel9 (ví dụ: biểu tượng "hiển thị mật khẩu")
+        jLabel9.setVisible(true);
+        // Hiển thị jLabel2 (ví dụ: biểu tượng "ẩn mật khẩu")
+        jLabel2.setVisible(false);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        // TODO add your handling code here:
+        char input = evt.getKeyChar();
+        if(! (input < '0' || input > '9') && input != '\b'){
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "User name doesn't contian any number!","warring",2);
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY(); 
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x -xx,y -xy);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -265,7 +323,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
