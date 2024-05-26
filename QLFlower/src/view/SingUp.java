@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,6 +52,11 @@ public class SingUp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -322,6 +329,42 @@ public class SingUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField3KeyTyped
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        // làm trandition cho form opacity
+        for(double i = 0.1; i<=1.0;i+=0.1){
+                String s = "" + i;
+                float f = Float.parseFloat(s);
+                this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SingUp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    public boolean isEmpty(){
+        if(jTextField3.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "User name is required!","warring",2);
+            return false;
+        }
+        if (String.valueOf(jPasswordField1.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "User name is required!", "warring", 2);
+            return false;
+        }
+        if (jComboBox1.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(this, "Security question is required!", "warring", 2);
+            return false;
+        }
+        if (jTextField5.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, " Answer is required!", "warring", 2);
+            return false;
+        }
+        
+        
+        return true;
+    }
     /**
      * @param args the command line arguments
      */
