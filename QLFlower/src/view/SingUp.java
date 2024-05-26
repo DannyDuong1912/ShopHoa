@@ -7,6 +7,7 @@ package view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.AdminDao;
 
 /**
  *
@@ -17,9 +18,11 @@ public class SingUp extends javax.swing.JFrame {
     /**
      * Creates new form SingUp
      */
+    AdminDao dao = new AdminDao();
     int xx,xy;
     public SingUp() {
         initComponents();
+        jTextField1.setText(String.valueOf(dao.getMaxRowAdminTable()));
     }
 
     /**
