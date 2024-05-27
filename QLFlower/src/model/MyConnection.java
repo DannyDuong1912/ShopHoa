@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class MyConnection {
     public static final String username = "root";
     public static final String password = "";
-    public static final String url = "jdbc:mysql://localhost:3360/flower";
+    public static final String url = "jdbc:mySQL://localhost:3306/flower";
     public static Connection con = null ;
     
     public static Connection getConnection(){
@@ -23,7 +23,7 @@ public class MyConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url,username,password);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,""+ex,"",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Không thể kết nối đến cơ sở dữ liệu !"+ex,"",JOptionPane.WARNING_MESSAGE);
         }
         
         return con;
